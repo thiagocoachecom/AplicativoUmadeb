@@ -7,10 +7,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        // Comuias UMDEB
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
