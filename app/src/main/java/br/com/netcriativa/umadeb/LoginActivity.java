@@ -1,9 +1,9 @@
 package br.com.netcriativa.umadeb;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -27,7 +27,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Obter instância de firebase auth
+        //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
 
         if (auth.getCurrentUser() != null) {
@@ -35,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
             finish();
         }
 
-        //define a visualização agora
+        // set the view now
         setContentView(R.layout.activity_login);
 
         inputEmail = (EditText) findViewById(R.id.email);
@@ -45,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin = (Button) findViewById(R.id.btn_login);
         btnReset = (Button) findViewById(R.id.btn_reset_password);
 
-        // Obter instância de firebase auth
+        //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
 
         btnSignup.setOnClickListener(new View.OnClickListener() {
@@ -100,9 +100,9 @@ public class LoginActivity extends AppCompatActivity {
                                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                     startActivity(intent);
                                     finish();
-                             }
-                         }
-                 });
+                                }
+                            }
+                        });
             }
         });
     }

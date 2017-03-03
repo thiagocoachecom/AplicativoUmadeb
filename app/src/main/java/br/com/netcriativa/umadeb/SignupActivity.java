@@ -61,21 +61,22 @@ public class SignupActivity extends AppCompatActivity {
                 String password = inputPassword.getText().toString().trim();
 
                 if (TextUtils.isEmpty(email)) {
-                    Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Digite um e-mail!", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (TextUtils.isEmpty(password)) {
-                    Toast.makeText(getApplicationContext(), "Enter password!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Digite uma senha!", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (password.length() < 6) {
-                    Toast.makeText(getApplicationContext(), "Password too short, enter minimum 6 characters!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "A senha deve conter mais de 6 caracteres.", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 progressBar.setVisibility(View.VISIBLE);
+
                 //create user
                 auth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(SignupActivity.this, new OnCompleteListener<AuthResult>() {
@@ -94,8 +95,7 @@ public class SignupActivity extends AppCompatActivity {
                                     finish();
                                 }
                             }
-                        });
-
+                 });
             }
         });
     }
