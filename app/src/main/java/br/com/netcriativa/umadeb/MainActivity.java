@@ -1,35 +1,35 @@
 package br.com.netcriativa.umadeb;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Toast;
 
-import com.mikepenz.iconics.IconicsDrawable;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.holder.BadgeStyle;
 import com.mikepenz.materialdrawer.interfaces.OnCheckedChangeListener;
-import com.mikepenz.materialdrawer.model.DividerDrawerItem;
 import com.mikepenz.materialdrawer.model.ExpandableBadgeDrawerItem;
 import com.mikepenz.materialdrawer.model.ExpandableDrawerItem;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
 import com.mikepenz.materialdrawer.model.ProfileSettingDrawerItem;
 import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
-import com.mikepenz.materialdrawer.model.SecondarySwitchDrawerItem;
-import com.mikepenz.materialdrawer.model.SecondaryToggleDrawerItem;
 import com.mikepenz.materialdrawer.model.SectionDrawerItem;
-import com.mikepenz.materialdrawer.model.SwitchDrawerItem;
-import com.mikepenz.materialdrawer.model.ToggleDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 import com.mikepenz.materialdrawer.model.interfaces.Nameable;
@@ -52,7 +52,8 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("UMADEB");
 
-        //Perfil
+
+//Perfil
         final IProfile profile = new ProfileDrawerItem().withName("Thiago Soares Pereira").withEmail("ths.pereira@gmail.com").withIcon("https://avatars3.githubusercontent.com/u/1476232?v=3&s=460").withIdentifier(10);
 
         // Create the AccountHeader
@@ -95,9 +96,12 @@ public class MainActivity extends AppCompatActivity {
                 .withActivity(this)
                 .withToolbar(toolbar)
                 .withAccountHeader(headerResult)
+                .withActionBarDrawerToggleAnimated(true)
+                .withSelectedItem(0)
                 .addDrawerItems(
                         new PrimaryDrawerItem().withName("Congresso Geral 2017").withIcon(R.drawable.ic_location_city_black_24dp).withIdentifier(1).withSelectable(false),
-                        new PrimaryDrawerItem().withName("Loja UMADEB").withIcon(R.drawable.ic_location_city_black_24dp).withIdentifier(1).withSelectable(false),
+                        new PrimaryDrawerItem().withName("Loja UMADEB").withIcon(R.drawable.ic_store_black_24dp).withIdentifier(1).withSelectable(false),
+                        new PrimaryDrawerItem().withName("Integrantes").withIcon(R.drawable.ic_people_black_24dp).withIdentifier(1).withSelectable(false),
 
 
                         new SectionDrawerItem().withName("Mais informações"),
@@ -110,15 +114,7 @@ public class MainActivity extends AppCompatActivity {
                                 new SecondaryDrawerItem().withName("CollapsableItem 2").withLevel(2).withIcon(R.drawable.logo_umadeb).withIdentifier(2003)
                         ),
                         new SecondaryDrawerItem().withName("Abrir").withIcon(R.drawable.logo_umadeb).withIdentifier(20).withSelectable(false),
-                        new SecondaryDrawerItem().withName("Abrir 2").withIcon(R.drawable.logo_umadeb).withIdentifier(21).withTag("Bullhorn"),
-                        new DividerDrawerItem(),
-                        new SwitchDrawerItem().withName("Switch").withIcon(R.drawable.logo_umadeb).withChecked(true).withOnCheckedChangeListener(onCheckedChangeListener),
-                        new SwitchDrawerItem().withName("Switch2").withIcon(R.drawable.logo_umadeb).withChecked(true).withOnCheckedChangeListener(onCheckedChangeListener).withSelectable(false),
-                        new ToggleDrawerItem().withName("Toggle").withIcon(R.drawable.logo_umadeb).withChecked(true).withOnCheckedChangeListener(onCheckedChangeListener),
-                        new DividerDrawerItem(),
-                        new SecondarySwitchDrawerItem().withName("Secondary switch").withIcon(R.drawable.logo_umadeb).withChecked(true).withOnCheckedChangeListener(onCheckedChangeListener),
-                        new SecondarySwitchDrawerItem().withName("Secondary Switch2").withIcon(R.drawable.logo_umadeb).withChecked(true).withOnCheckedChangeListener(onCheckedChangeListener).withSelectable(false),
-                        new SecondaryToggleDrawerItem().withName("Secondary toggle").withIcon(R.drawable.logo_umadeb).withChecked(true).withOnCheckedChangeListener(onCheckedChangeListener)
+                        new SecondaryDrawerItem().withName("Abrir 2").withIcon(R.drawable.logo_umadeb).withIdentifier(21).withTag("Bullhorn")
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
@@ -131,15 +127,13 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }).build();
 
+    }
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_main, menu);
+        return true;
     }
 
     private OnCheckedChangeListener onCheckedChangeListener = new OnCheckedChangeListener() {
@@ -152,5 +146,61 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     };
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        //handle the click on the back arrow click
+        switch (item.getItemId()) {
+            case R.id.item_1:
+                final Context context = this;
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+
+                // set title
+                alertDialogBuilder.setTitle("Desconectar do aplicativo");
+
+                // set dialog message
+                alertDialogBuilder
+                        .setMessage("Deseja Desconectar do aplicativo UMADEB?")
+                        .setCancelable(false)
+                        .setPositiveButton("Yes",new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,int id) {
+                                MainActivity.this.finish();
+                            }
+                        })
+                        .setNegativeButton("No",new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,int id) {
+                                // if this button is clicked, just close
+                                // the dialog box and do nothing
+                                dialog.cancel();
+                            }
+                        });
+
+                // create alert dialog
+                AlertDialog alertDialog = alertDialogBuilder.create();
+
+                // show it
+                alertDialog.show();
+
+                return true;
+            case R.id.item_2:
+
+                return true;
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 
 }
