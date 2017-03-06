@@ -1,4 +1,4 @@
-package br.com.netcriativa.umadeb;
+package br.com.netcriativa.umadeb.activity;
 
 import android.content.Context;
 import android.content.SharedPreferences;

@@ -1,4 +1,4 @@
-package br.com.netcriativa.umadeb;
+package br.com.netcriativa.umadeb.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -17,6 +17,8 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import br.com.netcriativa.umadeb.R;
 
 public class WelcomeActivity extends AppCompatActivity {
 

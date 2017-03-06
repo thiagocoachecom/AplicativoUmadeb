@@ -1,9 +1,11 @@
-package br.com.netcriativa.umadeb;
+package br.com.netcriativa.umadeb.activity;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
+import br.com.netcriativa.umadeb.R;
 
 /**
  * Created by Thiago on 05/03/2017.

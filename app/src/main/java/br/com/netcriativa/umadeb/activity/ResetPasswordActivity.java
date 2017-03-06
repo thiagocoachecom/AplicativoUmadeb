@@ -1,4 +1,4 @@
-package br.com.netcriativa.umadeb;
+package br.com.netcriativa.umadeb.activity;
 
 import android.graphics.Color;
 import android.os.Build;
@@ -17,6 +17,8 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+
+import br.com.netcriativa.umadeb.R;
 
 public class ResetPasswordActivity extends AppCompatActivity {
 

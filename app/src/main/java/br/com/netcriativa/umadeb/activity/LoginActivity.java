@@ -1,4 +1,4 @@
-package br.com.netcriativa.umadeb;
+package br.com.netcriativa.umadeb.activity;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -19,6 +19,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+
+import br.com.netcriativa.umadeb.R;
 
 public class LoginActivity extends AppCompatActivity {
 
