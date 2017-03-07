@@ -1,4 +1,4 @@
-package br.com.netcriativa.umadeb.model;
+package br.com.netcriativa.umadeb.helper;
 
 /**
  * Created by Thiago on 06/03/2017.

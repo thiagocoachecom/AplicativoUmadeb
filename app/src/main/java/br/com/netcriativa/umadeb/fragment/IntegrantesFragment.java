@@ -17,7 +17,7 @@ import java.util.List;
 
 import br.com.netcriativa.umadeb.R;
 import br.com.netcriativa.umadeb.adapter.MoviesAdapter;
-import br.com.netcriativa.umadeb.model.DividerItemDecoration;
+import br.com.netcriativa.umadeb.helper.DividerItemDecoration;
 import br.com.netcriativa.umadeb.model.Movie;
 
 

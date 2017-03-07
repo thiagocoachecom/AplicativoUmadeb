@@ -1,5 +1,6 @@
 package br.com.netcriativa.umadeb.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -94,13 +95,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         if (id == R.id.umadeb_2018) {
+
             setTitle("Congresso 2018");
             Fragment f = MainFragment.newInstance("fragment1");
             getSupportFragmentManager().beginTransaction().replace(R.id.frame, f).commit();
+
         } else if (id == R.id.integrantes) {
+
             setTitle("Integrantes");
             Fragment f = IntegrantesFragment.newInstance("fragment2");
             getSupportFragmentManager().beginTransaction().replace(R.id.frame, f).commit();
+
+        } else if (id == R.id.agenda_geral) {
+           // Intent intent = new Intent(this, AgendaGeralActivity.class);
+            //startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
