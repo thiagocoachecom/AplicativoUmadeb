@@ -42,8 +42,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
 
-
-
         //Botão de Compartilhamento com Social Media
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
