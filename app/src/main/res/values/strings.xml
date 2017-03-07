@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Umadeb</string>
+    <string name="app_name">Umadeb Play</string>
     <string name="action_sign_in_short">Registrar</string>
     <string name="email">Email</string>
     <string name="minimum_password">Senha muito curta, insira no mínimo 6 caracteres!</string>
@@ -69,6 +69,9 @@
     <!--Textos do CardView - Congresso 2018 -->
     <string name="action_add_favourite">Add to Favourites</string>
     <string name="action_play_next">Play Next</string>
-    <string name="backdrop_title">LOVE MUSIC</string>
-    <string name="backdrop_subtitle">This season top 20 albums</string>
+    <string name="backdrop_title">Umadeb Play Music</string>
+    <string name="backdrop_subtitle">Repertório do congresso!</string>
+    <string name="title_activity_album">AlbumActivity</string>
+    <string name="album">Album</string>
+    <string name="quem_somos">Quem somos?</string>
 </resources>

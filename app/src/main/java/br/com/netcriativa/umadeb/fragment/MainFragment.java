@@ -14,7 +14,7 @@ import br.com.netcriativa.umadeb.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MainFragment extends Fragment implements View.OnClickListener{
+public class MainFragment extends Fragment{
     private static final String KEY_TITLE = "title";
 
 
@@ -24,12 +24,9 @@ public class MainFragment extends Fragment implements View.OnClickListener{
 
     public static Fragment newInstance(String demo) {
         MainFragment f = new MainFragment();
-
         Bundle args = new Bundle();
-
         args.putString(KEY_TITLE, demo);
         f.setArguments(args);
-
         return (f);
     }
 
@@ -39,25 +36,8 @@ public class MainFragment extends Fragment implements View.OnClickListener{
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_main, container, false);
 
-        Button btn1 = (Button) v.findViewById(R.id.btn1);
-        Button btn2 = (Button) v.findViewById(R.id.btn2);
-
-
-        btn1.setOnClickListener(this);
-        btn2.setOnClickListener(this);
 
         return v;
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.btn1:
-                Toast.makeText(getActivity(), "Botão 1 Clicado", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.btn2:
-                Toast.makeText(getActivity(), "Botão 2 Clicado", Toast.LENGTH_SHORT).show();
-                break;
-        }
-    }
 }
