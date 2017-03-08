@@ -47,12 +47,19 @@ dependencies {
     // Glide
     compile 'com.github.bumptech.glide:glide:3.7.0'
 
+    // RecyclerView
     compile 'com.android.support:recyclerview-v7:23.1.1'
+
+    //Suporte ao Design
     compile 'com.android.support:design:23.1.1'
 
+    //Material Drawer
     compile('com.mikepenz:materialdrawer:5.8.2@aar') {
         transitive = true
     }
+
+    //ImageView Redonda
+    compile 'de.hdodenhof:circleimageview:2.1.0'
 
 }
 

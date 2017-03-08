@@ -126,7 +126,7 @@ public class SignupActivity extends AppCompatActivity {
 
                                     UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
                                             .setDisplayName(nome)
-                                            .setPhotoUri(Uri.parse("https://example.com/jane-q-user/profile.jpg"))
+                                            .setPhotoUri(Uri.parse("http://www.mundoreal.xyz/wp-content/uploads/2014/08/Filme-Avatar.jpg"))
                                             .build();
 
                                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();

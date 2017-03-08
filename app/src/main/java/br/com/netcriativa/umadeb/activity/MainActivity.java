@@ -16,10 +16,12 @@ import android.support.v7.widget.Toolbar;
 import android.support.v4.app.Fragment;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.squareup.picasso.Picasso;
 
 import br.com.netcriativa.umadeb.R;
 import br.com.netcriativa.umadeb.fragment.AgendaGeralFragment;
@@ -35,6 +37,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Instancia o usuário firebase
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
         //Seta a toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -47,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             getSupportFragmentManager().beginTransaction().replace(R.id.frame, f).commit();
         }
 
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
         if (user != null) {
             String TAG = "MainActivity";
 
@@ -57,10 +62,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Uri photoUrl = user.getPhotoUrl();
             String uid = user.getUid();
 
+            Log.d(TAG, "Nome: --> "+name);
+            Log.d(TAG, "Nome: --> "+email);
+            Log.d(TAG, "Nome: --> "+photoUrl);
+            Log.d(TAG, "Nome: --> "+uid);
+
+            //Obtem a navigation Header
             NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
             View headerView = navigationView.getHeaderView(0);
-            TextView navUsername = (TextView) headerView.findViewById(R.id.txt_nome_usuario);
-            navUsername.setText(name);
+
+
+            //Insere os dados de Nome e Email no Header Navigation
+            TextView nomeUsuario = (TextView) headerView.findViewById(R.id.txt_nome_usuario);
+            TextView emailUsuario = (TextView) headerView.findViewById(R.id.txt_email_usuario);
+
+            //Define a imagem do perfil
+            ImageView imageView = (ImageView) headerView.findViewById(R.id.image_view_perfil);
+            Picasso.with(headerView.getContext()).load(photoUrl).into(imageView);
+
+
+            nomeUsuario.setText(name);
+            emailUsuario.setText(email);
+
 
         } else {
             String TAG = "MainActivity";

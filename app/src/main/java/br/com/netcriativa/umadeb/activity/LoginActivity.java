@@ -116,23 +116,6 @@ public class LoginActivity extends AppCompatActivity {
                                         Toast.makeText(LoginActivity.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
                                     }
                                 } else {
-
-                                    UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                                            .setDisplayName("Thiago Soares Login")
-                                            .setPhotoUri(Uri.parse("https://example.com/jane-q-user/profile.jpg"))
-                                            .build();
-
-                                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                                    user.updateProfile(profileUpdates)
-                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                @Override
-                                                public void onComplete(@NonNull Task<Void> task) {
-                                                    if (task.isSuccessful()) {
-                                                        Log.d("TudoOk", "User profile updated.");
-                                                    }
-                                                }
-                                            });
-
                                     Intent intent = new Intent(LoginActivity.this, WelcomeActivity.class);
                                     startActivity(intent);
                                     finish();
