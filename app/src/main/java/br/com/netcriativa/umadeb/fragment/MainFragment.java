@@ -1,8 +1,10 @@
 package br.com.netcriativa.umadeb.fragment;
 
 
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,6 +15,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -36,11 +41,12 @@ public class MainFragment extends Fragment{
     private static final String KEY_TITLE = "title";
 
     ///CardViewHomw
-    private static final String TAG = "RecyclerViewExample";
+    private static final String TAG = "MainFragment";
     private List<FeedItem> feedsList;
     private RecyclerView mRecyclerView;
     private MyRecyclerViewAdapter adapter;
     private ProgressBar progressBar;
+
 
 
     public MainFragment() {
@@ -66,6 +72,9 @@ public class MainFragment extends Fragment{
         mRecyclerView = (RecyclerView) v.findViewById(R.id.recycler_view);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         progressBar = (ProgressBar) v.findViewById(R.id.progress_bar);
+
+
+
 
         String url = "http://stacktips.com/?json=get_category_posts&slug=news&count=30";
         new DownloadTask().execute(url);

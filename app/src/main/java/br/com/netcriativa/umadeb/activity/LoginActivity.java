@@ -2,11 +2,13 @@ package br.com.netcriativa.umadeb.activity;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -19,6 +21,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 
 import br.com.netcriativa.umadeb.R;
 
@@ -52,6 +56,7 @@ public class LoginActivity extends AppCompatActivity {
         // Tornando a barra de notificação transparente
         changeStatusBarColor();
 
+
         inputEmail = (EditText) findViewById(R.id.email);
         inputPassword = (EditText) findViewById(R.id.password);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
@@ -82,35 +87,52 @@ public class LoginActivity extends AppCompatActivity {
                 String email = inputEmail.getText().toString();
                 final String password = inputPassword.getText().toString();
 
+                //Verifica se o usuário escreveu o email
                 if (TextUtils.isEmpty(email)) {
-                    Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Escreva o seu email!", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
+                //verifica se o usuario digitou a senha
                 if (TextUtils.isEmpty(password)) {
-                    Toast.makeText(getApplicationContext(), "Enter password!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Digite a sua senha!", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 progressBar.setVisibility(View.VISIBLE);
 
-                //authenticate user
+                //Autentica Usuário
                 auth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
-                                // If sign in fails, display a message to the user. If sign in succeeds
-                                // the auth state listener will be notified and logic to handle the
-                                // signed in user can be handled in the listener.
+
+                                //Inicia o  ProgressBar
                                 progressBar.setVisibility(View.GONE);
+
                                 if (!task.isSuccessful()) {
-                                    // there was an error
                                     if (password.length() < 6) {
                                         inputPassword.setError(getString(R.string.minimum_password));
                                     } else {
                                         Toast.makeText(LoginActivity.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
                                     }
                                 } else {
+
+                                    UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                            .setDisplayName("Thiago Soares Login")
+                                            .setPhotoUri(Uri.parse("https://example.com/jane-q-user/profile.jpg"))
+                                            .build();
+
+                                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                                    user.updateProfile(profileUpdates)
+                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+                                                    if (task.isSuccessful()) {
+                                                        Log.d("TudoOk", "User profile updated.");
+                                                    }
+                                                }
+                                            });
+
                                     Intent intent = new Intent(LoginActivity.this, WelcomeActivity.class);
                                     startActivity(intent);
                                     finish();
