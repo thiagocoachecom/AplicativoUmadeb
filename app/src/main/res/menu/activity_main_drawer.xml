@@ -5,7 +5,7 @@
         <item
             android:id="@+id/umadeb_2018"
             android:title="@string/umadeb_ano"
-            android:icon="@drawable/ic_location_city_black_24dp" />
+            android:icon="@mipmap/ic_umadeb_icon_preto" />
         <item
             android:id="@+id/integrantes"
             android:icon="@drawable/ic_people_black_24dp"

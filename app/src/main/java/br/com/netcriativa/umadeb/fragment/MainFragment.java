@@ -75,6 +75,7 @@ public class MainFragment extends Fragment{
 
     public class DownloadTask extends AsyncTask<String, Void, Integer> {
 
+
         @Override
         protected void onPreExecute() {
             progressBar.setVisibility(View.VISIBLE);

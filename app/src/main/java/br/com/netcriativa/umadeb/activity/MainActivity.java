@@ -53,6 +53,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
 
+
+
         if (user != null) {
             String TAG = "MainActivity";
 
