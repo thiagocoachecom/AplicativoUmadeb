@@ -5,7 +5,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.ShareActionProvider;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -17,7 +16,6 @@ import android.support.v7.widget.Toolbar;
 import android.support.v4.app.Fragment;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -51,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
-             String TAG = "MainActivity";
+            String TAG = "MainActivity";
 
 
             String name = user.getDisplayName();
@@ -131,6 +129,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             AlertDialog alertDialog = alerta.create();
             alertDialog.show();
 
+            return true;
+        } else if (id == R.id.btn_sair){
             return true;
         }
 

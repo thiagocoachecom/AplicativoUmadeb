@@ -122,8 +122,10 @@ public class SignupActivity extends AppCompatActivity {
                                     Toast.makeText(SignupActivity.this, "Cadastro falhou" + task.getException(), Toast.LENGTH_SHORT).show();
                                 } else {
 
+                                    String nome = inputNome.getText().toString().trim();
+
                                     UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                                            .setDisplayName("Thiago SignUp")
+                                            .setDisplayName(nome)
                                             .setPhotoUri(Uri.parse("https://example.com/jane-q-user/profile.jpg"))
                                             .build();
 
@@ -134,7 +136,7 @@ public class SignupActivity extends AppCompatActivity {
                                                 public void onComplete(@NonNull Task<Void> task) {
                                                     if (task.isSuccessful()) {
                                                         Log.d("LOGIN", "Sucesso");
-                                                    } else{
+                                                    } else {
                                                         Log.d("LOGIN", "Nao Sucesso");
                                                     }
                                                 }
